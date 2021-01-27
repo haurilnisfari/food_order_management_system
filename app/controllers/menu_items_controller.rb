@@ -12,7 +12,8 @@ class MenuItemsController < ApplicationController
     end
 
     def index
-        @menus = MenuItem.all
+        @menus = MenuItem.search(params[:search])
+        # @menus = MenuItem.all
     end
     
     def edit
@@ -42,6 +43,6 @@ class MenuItemsController < ApplicationController
 
     def resource_params
         params.require(:menu_item).permit(:name, :price, :note)
-      end
+    end
 
 end

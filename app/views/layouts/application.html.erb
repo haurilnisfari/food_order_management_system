@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodOrderManagementSystem</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
   <body>
+    <!-- Navbar -->
+    <div class="container">
+      <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+        <a href="<%= menu_items_path %>" class="navbar-brand">
+          <%=image_tag("logo_foorder.png", alt: "Logo Foorder")%>
+        </a>
+        <button 
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navb"
+          >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navb">
+          <ul class="navbar-nav ml-auto mr-3">
+            <li class="nav-item mx-md-2">
+              <a href="<%= menu_items_path %>" class="nav-link active">Menu Items</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto mr-3">
+            <li class="nav-item mx-md-2">
+              <a href="<%= menu_items_path %>" class="nav-link">Categories</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto mr-3">
+            <li class="nav-item mx-md-2">
+              <a href="<%= menu_items_path %>" class="nav-link">Orders</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto mr-3">
+            <li class="nav-item mx-md-2">
+              <a href="<%= menu_items_path %>" class="nav-link">Customers</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+
+
     <%= yield %>
+
+    <!-- Footer -->
+    <footer class="section-footer pt-3 pb-3 border-top">
+      <div class="container">
+        <div class="row ">
+          <div class="col-md-12 text-center">
+            2021 Copyright FOOrDer. All right reserved. Made in Special Region of Yogyakarta
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>

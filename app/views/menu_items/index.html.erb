@@ -1,1 +1,59 @@
-Haloooo
+<!-- Main -->
+<main>
+    <section class="section-index" id="index">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 text-left section-index-title">
+                    <h2>Menu Items</h2>
+                </div>
+
+                <div class="col-md-6 col-sm-6 text-right section-add-menu">
+                    <button type="submit" class="btn btn-add-new-menu-item">
+                        <%= link_to 'Add New Menu Item', new_menu_item_path %>
+                    </button>
+                 </div>
+            </div>
+            </br>
+
+            <div class="form_horizontal">
+                <%= form_tag root_path, method: 'get' do  %>
+                <p>
+                    <%= text_field_tag :search %>
+                    <%= submit_tag "Search", name: nil %>
+                </p>
+            <% end %>
+
+            <div class="index-list">
+                <table class="table pretty table-responsive-sm text-center table-light table-striped" >
+                    <thead>
+                        <tr class="text-center">
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Note</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @menus.each do |menu| %>
+                            <tr>
+                                <td class="align-middle"><%= menu.name %></td>
+                                <td class="align-middle"><%= menu.price%></td>
+                                <td class="align-middle"><%= menu.note%></td>
+                                <td class="align-middle">
+                                    <%= link_to 'Detail', menu_item_path(menu) %> |
+                                    <%= link_to 'Edit', edit_menu_item_path(menu) %> |
+                                    <%= link_to 'Delete', menu_item_path(menu), method: :delete, data: {confirm: "Are you sure?"} %> 
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+    
+    </section>
+</main>
+
