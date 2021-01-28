@@ -4,19 +4,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 text-left section-index-title">
-                    <h2>Menu Items</h2>
+                    <h2>Category</h2>
                 </div>
 
                 <div class="col-md-6 col-sm-6 text-right section-add-menu">
                     <button type="submit" class="btn btn-add-new-menu-item">
-                        <%= link_to 'Add New Menu Item', new_menu_item_path %>
+                        <%= link_to 'Add New Category', new_category_path %>
                     </button>
                  </div>
             </div>
             </br>
 
             <div class="leftcolumn">
-                <%= form_tag root_path, method: 'get' do  %>
+                <%= form_tag categories_path, method: 'get' do  %>
                     <p>
                         <%= text_field_tag :search %>
                         <%= submit_tag "Search", name: nil %>
@@ -24,37 +24,28 @@
                 <% end %>
             </div>
 
-            <div class="index-list">
+            <div class="index-list col-md-6 col-sm-6">
                 <table class="table pretty table-responsive-sm text-center table-light table-striped" >
                     <thead>
                         <tr class="text-center">
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Category</th>
                             <th> </th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% @menus.each do |menu| %>
+                        <% @categories.each do |category| %>
                             <tr>
-                                <td class="align-middle"><%= menu.name %></td>
-                                <td class="price"><%= menu.price%></td>
-                                <% array = [] %>
-                                <% menu.categories.each do |category| %>
-                                    <% array << category.name %>
-                                <% end %>
-                                <td><%= array.join(', ') %></td>
-                                <td class="align-middle">
-                                    <%= link_to 'Detail', menu_item_path(menu) %> |
-                                    <%= link_to 'Edit', edit_menu_item_path(menu) %> |
-                                    <%= link_to 'Delete', menu_item_path(menu), method: :delete, data: {confirm: "Are you sure?"} %> 
+                                <td><%= category.name %></td>
+                                <td class="text-center">
+                                    <%= link_to 'Edit', edit_category_path(category) %> |
+                                    <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> 
                                 </td>
                             </tr>
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @menus %>
+                <%= paginate @categories %>
             </div>
         </div>
     </section>

@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_115816) do
   end
 
   create_table "menu_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "menu_id"
+    t.integer "menu_item_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -16,6 +16,16 @@ body {
     font-weight: bold;
     color: black !important;
 }
+
+form {
+    padding: 25px;
+}
+  
+.card {
+    margin-top: 0px;
+    border-radius: 2%;
+}
+  
   
 .section-index {
     min-height: 700px;
@@ -41,6 +51,12 @@ h2 {
     font-size: 30px;
 }
 
+.leftcolumn {
+    width: 100%;
+    padding-left: 0px;
+    margin-left: -20px;
+  }
+
 .index-list thead {
     color: black;
     font-family: 'Overpass', sans-serif;
@@ -51,6 +67,7 @@ h2 {
     color: black;
     font-family: 'Overpass', sans-serif;
     font-weight: lighter;
+    text-align: left;
 }
 
 .btn-add-new-menu-item {
@@ -63,3 +80,27 @@ h2 {
     background-color: #F8CB73;
     color: #ffffff;
 }
+
+.section-menu-form {
+    min-height: 550px;
+    background-color: #142936;
+  }
+  
+  .heading-new-menu {
+    color: #142936;
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .btn-save-menu {
+    background-color: #FEC148;
+    color: #ffffff;
+    margin-left: 20px;
+    margin-bottom: 100px;
+  }
+  
+  .btn-save-menu:hover {
+    background-color: #F8CB73;
+    color: #ffffff;
+  }
+  

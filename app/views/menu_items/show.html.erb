@@ -1,0 +1,42 @@
+<!-- Main -->
+<main>
+    <section class="section-menu-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 pl-lg-0">
+                    <div class="card card-menu">
+                        <div class="menu-new mt 3">
+                            <h2 class="heading-new-menu">Detail Menu Item</h2>
+                            <div class="form-group">
+                                <%= form_for(@menu) do |f| %>
+                                    <%= f.label :name, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @menu.name %>
+                                    </br>
+
+                                    <%= f.label :price, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @menu.price %>
+                                    </br>
+
+                                    <%= f.label :note, { class: "control-label col-sm-3"} %> : 
+                                    <%=  @menu.note %>
+                                    </br>
+
+                                    <%= f.label :category, { class: "control-label col-sm-3"} %> : 
+                                    <% @menu.categories.each do |category| %>
+                                        <%= category.name %>
+                                    <% end %>
+                                    </br>
+                                    </br>
+
+                                    <button type="submit" class="btn btn-add-new-menu">
+                                        <%= link_to 'Back to Menu Items', menu_items_path %>
+                                    </button>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section
+</main>

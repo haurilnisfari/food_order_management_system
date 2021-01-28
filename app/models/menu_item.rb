@@ -1,4 +1,5 @@
 class MenuItem < ApplicationRecord
+    paginates_per 5
     has_many :menu_categories
     has_many :categories, through: :menu_categories
 
@@ -9,5 +10,5 @@ class MenuItem < ApplicationRecord
         MenuItem.all
       end
     end
-  end
+end
   
