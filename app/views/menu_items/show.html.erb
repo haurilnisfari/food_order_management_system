@@ -21,15 +21,25 @@
                                     <%=  @menu.note %>
                                     </br>
 
-                                    <%= f.label :category, { class: "control-label col-sm-3"} %> : 
-                                    <% @menu.categories.each do |category| %>
-                                        <%= category.name %>
-                                    <% end %>
+                                    <%= f.label :categories, { class: "control-label col-sm-3"} %>
+                                    <div class="col-sm-10">
+                                        <% @menu.categories.each do |category| %>
+                                            <%= f.check_box :categories, { multiple: true, checked: true }, category.id, false %> <%= category.name %> </br>
+                                        <% end %>
+                                    </div>
                                     </br>
                                     </br>
 
-                                    <button type="submit" class="btn btn-add-new-menu">
+                                    <button type="submit" class="btn btn-add-new-menu-item">
                                         <%= link_to 'Back to Menu Items', menu_items_path %>
+                                    </button>
+
+                                    <button type="submit" class="btn btn-add-new-menu-item">
+                                        <%= link_to 'Delete', menu_item_path(@menu), method: :delete, data: {confirm: "Are you sure?"}%>
+                                    </button>
+
+                                    <button type="submit" class="btn btn-add-new-menu-item">
+                                        <%= link_to 'Edit', edit_menu_item_path(@menu)  %>
                                     </button>
                                 <% end %>
                             </div>

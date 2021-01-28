@@ -81,6 +81,12 @@ h2 {
     color: #ffffff;
 }
 
+.btn-cancel {
+    background-color:#b3ada8;
+    color: #ffffff;
+    margin-top: -5px;
+}
+
 .section-menu-form {
     min-height: 550px;
     background-color: #142936;
