@@ -4,12 +4,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 text-left section-index-title">
-                    <h2>Categories</h2>
+                    <h2>Customers</h2>
                 </div>
 
                 <div class="col-md-6 col-sm-6 text-right section-add-menu">
                     <button type="submit" class="btn btn-add-new-menu-item">
-                        <%= link_to 'Add New Category', new_category_path %>
+                        <%= link_to 'Add New Customer', new_customer_path %>
                     </button>
                  </div>
             </div>
@@ -20,23 +20,25 @@
                     <thead>
                         <tr class="text-center">
                             <th>Name</th>
+                            <th>Phone</th>
                             <th> </th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% @categories.each do |category| %>
+                        <% @customers.each do |customer| %>
                             <tr>
-                                <td><%= category.name %></td>
+                                <td><%= customer.name %></td>
+                                <td><%= customer.phone %></td>
                                 <td class="text-center">
-                                    <%= link_to 'Edit', edit_category_path(category) %> |
-                                    <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"} %> 
+                                    <%= link_to 'Edit', edit_customer_path(customer) %> |
+                                    <%= link_to 'Delete', customer_path(customer), method: :delete, data: {confirm: "Are you sure?"} %> 
                                 </td>
                             </tr>
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @categories %>
+                <%= paginate @customers %>
             </div>
         </div>
     </section>

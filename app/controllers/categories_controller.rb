@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
 
 
     def index
-        @categories = Category.search(params[:search]).page(params[:page])
+        @categories = Category.page(params[:page])
     end
 
 

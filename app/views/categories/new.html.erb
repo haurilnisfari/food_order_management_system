@@ -14,10 +14,12 @@
                                             <%= f.text_field :name, :class => "form-control", :placeholder => "Enter Category Name" %>
                                         </div>
                                         </br>
+                                        <button type="submit" class="btn btn-cancel">
+                                            <%= link_to 'Cancel', categories_path %>
+                                        </button>
                                         <%= f.submit "Save" , { class: "btn btn-save-menu mb-2 px-4" } %>
                                     <% end %>
                                 </div>
-
                         </div>
                     </div>
                 </div>
