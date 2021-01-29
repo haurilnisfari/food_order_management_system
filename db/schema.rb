@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_01_27_115816) do
 
   create_table "order_lines", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "order_id"
-    t.integer "menu_id"
+    t.integer "menu_item_id"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -6,47 +6,47 @@
                 <div class="col-lg-6 pl-lg-0">
                     <div class="card card-menu">
                         <div class="menu-new mt 3">
-                            <h2 class="heading-new-menu">Detail Customer</h2>
+                            <h2 class="heading-new-menu">Detail Order</h2>
                             <div class="form-group">
-                                <%= form_for(@customer) do |f| %>
+                                <%= form_for(@order) do |f| %>
                                     <%= f.label :name, { class: "control-label col-sm-3"} %> :  
-                                    <%=  @customer.name %>
+                                    <%=  @order.name %>
                                     </br>
 
-                                    <%= f.label :phone, { class: "control-label col-sm-3"} %> :  
-                                    <%=  @customer.phone %>
+                                    <%= f.label :customer_id, { class: "control-label col-sm-3"} %> :  
+                                    <%=  @customers.find_by(id: @order.customer_id).name %>
                                     </br>
                                     </br>
 
                                     <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Back to Customer List', customers_path %>
+                                        <%= link_to 'Back to Order List', orders_path %>
                                     </button>
 
                                     <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Delete', customers_path(@customer), method: :delete, data: {confirm: "Are you sure?"}%>
+                                        <%= link_to 'Delete', order_path(@order), method: :delete, data: {confirm: "Are you sure?"}%>
                                     </button>
 
                                     <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Edit', edit_customer_path(@customer)  %>
+                                        <%= link_to 'Edit', edit_order_path(@order)  %>
                                     </button>
                                 <% end %>
                             </div>
 
-                            <h2 class="heading-new-menu">Customer Order List</h2>
+                            <h4>Order Item</h4>
                             <div class="index-list">
-                                <table class="table pretty table-responsive-sm text-center table-light table-striped" >
+                                <table class="table table-responsive-sm text-center table-light table-striped" >
                                     <thead>
                                         <tr class="text-center">
-                                            <th>Name</th>
-                                            <th>Date</th>
+                                            <th>Menu</th>
+                                            <th>Price</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <% @orders.where(customer_id: params[:id]).each do |order| %>
+                                        <% @order.order_line.each do |line| %>
                                             <tr>
-                                                <td class="align-middle"><%= link_to order.name, order_path(order) %></td>
-                                                <td class="align-middle"><%= order.created_at.strftime("%m/%d/%Y") %></td>
+                                                <td class="align-middle"><%= MenuItem.find_by(id: line.menu_item_id).name %></td>
+                                                <td class="align-middle"><%= line.price%></td>
                                             </tr>
                                         <% end %>
                                     </tbody>

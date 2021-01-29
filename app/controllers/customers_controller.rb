@@ -1,8 +1,7 @@
 class CustomersController < ApplicationController
-
+    
     def new
         @customer = Customer.new
-        @orders = Order.all
     end
 
     def create
@@ -27,6 +26,11 @@ class CustomersController < ApplicationController
         customer = Customer.find(params[:id])
         customer.update(resource_params)
         redirect_to customers_path
+    end
+
+    def show
+        @customer = Customer.find(params[:id])
+        @orders = Order.all
     end
 
     def destroy

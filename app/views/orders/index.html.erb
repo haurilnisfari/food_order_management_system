@@ -1,0 +1,56 @@
+<!-- Main -->
+<main>
+    <section class="section-index" id="index">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 text-left section-index-title">
+                    <h2>Orders</h2>
+                </div>
+
+                <div class="col-md-6 col-sm-6 text-right section-add-menu">
+                    <button type="submit" class="btn btn-add-new-menu-item">
+                        <%= link_to 'Add New Order', new_order_path %>
+                    </button>
+                 </div>
+            </div>
+            </br>
+
+            <div class="leftcolumn">
+                <%= form_tag orders_path, method: 'get' do  %>
+                    <p>
+                        <%= text_field_tag :search %>
+                        <%= submit_tag "Search", name: nil %>
+                    </p>
+                <% end %>
+            </div>
+
+            <div class="index-list">
+                <table class="table pretty table-responsive-sm text-center table-light table-striped" >
+                    <thead>
+                        <tr class="text-center">
+                            <th>Name</th>
+                            <th>Customer</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @orders.each do |order| %>
+                            <tr>
+                                <td class="align-middle"><%= order.name %></td>
+                                <td class="align-middle"><%= Customer.find_by(id: order.customer_id).name %></td>
+                                <td class="align-middle">
+                                    <%= link_to 'Detail', order_path(order) %> |
+                                    <%= link_to 'Detail Order', order_lines_path %> |
+                                    <%= link_to 'Edit', edit_order_path(order) %> |
+                                    <%= link_to 'Delete', order_path(order), method: :delete, data: {confirm: "Are you sure?"} %> 
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                <%= paginate @orders %>
+            </div>
+        </div>
+    </section>
+</main>

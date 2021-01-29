@@ -1,0 +1,42 @@
+<!-- Main -->
+<main>
+    <section class="section-index" id="index">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 text-left section-index-title">
+                    <h2>Order Lines</h2>
+                </div>
+            </div>
+            </br>
+
+            <div class="leftcolumn">
+                <%= form_tag order_lines_path, method: 'get' do  %>
+                    <p>
+                        <%= text_field_tag :search %>
+                        <%= submit_tag "Search", name: nil %>
+                    </p>
+                <% end %>
+            </div>
+
+            <div class="index-list">
+                <table class="table pretty table-responsive-sm text-center table-light table-striped" >
+                    <thead>
+                        <tr class="text-center">
+                            <th>Menu</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% @lines.each do |line| %>
+                            <tr>
+                                <td class="align-middle"><%= MenuItem.find_by(id: line.menu_item_id).name %></td>
+                                <td class="align-middle"><%= line.price%></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
