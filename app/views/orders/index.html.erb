@@ -38,7 +38,7 @@
                         <% @orders.each do |order| %>
                             <tr>
                                 <td class="align-middle"><%= order.name %></td>
-                                <td class="align-middle"><%= Customer.find_by(id: order.customer_id).name %></td>
+                                <td class="align-middle"><%= order.customer.name %></td>
                                 <td class="align-middle">
                                     <%= link_to 'Detail', order_path(order) %> |
                                     <%= link_to 'Detail Order', order_lines_path %> |
