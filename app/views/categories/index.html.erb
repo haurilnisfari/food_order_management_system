@@ -15,7 +15,7 @@
             </div>
             </br>
             
-            <div class="index-list col-md-6 col-sm-6">
+            <div class="index-list col-md-6 col-sm-6" id="category-table">
                 <table class="table pretty table-responsive-sm text-center table-light table-striped" >
                     <thead>
                         <tr class="text-center">
@@ -36,7 +36,7 @@
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @categories %>
+                <%= paginate @categories, params: { anchor: "category-table" }  %>
             </div>
         </div>
     </section>

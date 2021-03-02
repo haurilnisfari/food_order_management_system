@@ -15,43 +15,45 @@
 
                                     <%= f.label :phone, { class: "control-label col-sm-3"} %> :  
                                     <%=  @customer.phone %>
-                                    </br>
-                                    </br>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Back to Customer List', customers_path %>
-                                    </button>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Delete', customers_path(@customer), method: :delete, data: {confirm: "Are you sure?"}%>
-                                    </button>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Edit', edit_customer_path(@customer)  %>
-                                    </button>
                                 <% end %>
                             </div>
-
-                            <h2 class="heading-new-menu">Customer Order List</h2>
-                            <div class="index-list">
-                                <table class="table pretty table-responsive-sm text-center table-light table-striped" >
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <% @orders.where(customer_id: params[:id]).each do |order| %>
-                                            <tr>
-                                                <td class="align-middle"><%= link_to order.name, order_path(order) %></td>
-                                                <td class="align-middle"><%= order.created_at.strftime("%m/%d/%Y") %></td>
+                            
+                            <% if @orders.where(customer_id: params[:id]).present? %>
+                                <h4 class="heading-new-menu">Customer Order List</h4>
+                                <div class="index-list">
+                                    <table class="table pretty table-responsive-sm text-center table-light table-striped" >
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>Name</th>
+                                                <th>Date</th>
                                             </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </thead>
+
+                                        <tbody>
+                                            <% @orders.where(customer_id: params[:id]).each do |order| %>
+                                                <tr>
+                                                    <td class="align-middle"><%= link_to order.name, order_path(order) %></td>
+                                                    <td class="align-middle"><%= order.created_at.strftime("%d-%m-%Y") %></td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% end %>
+                            
+                            <button type="submit" class="btn btn-add-new-menu-item">
+                                <%= link_to 'Back to Customer List', customers_path %>
+                            </button>
+
+                            <button type="submit" class="btn btn-add-new-menu-item">
+                                <%= link_to 'Delete', customers_path(@customer), method: :delete, data: {confirm: "Are you sure?"}%>
+                            </button>
+
+                            <button type="submit" class="btn btn-add-new-menu-item">
+                                <%= link_to 'Edit', edit_customer_path(@customer)  %>
+                            </button>
+                            </br>
+                            </br>
                         </div>
                     </div>
                 </div>

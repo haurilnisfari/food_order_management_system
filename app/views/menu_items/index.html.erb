@@ -24,7 +24,7 @@
                 <% end %>
             </div>
 
-            <div class="index-list">
+            <div class="index-list" id="menu-item-table">
                 <table class="table pretty table-responsive-sm text-center table-light table-striped" >
                     <thead>
                         <tr class="text-center">
@@ -54,7 +54,7 @@
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @menus %>
+                <%= paginate @menus, params: { anchor: "menu-item-table" } %>
             </div>
         </div>
     </section>

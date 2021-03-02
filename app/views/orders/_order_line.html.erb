@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-4 col-sm-4 text-left">
+      <%= f.label :menu_item_id, { class: "control-label col-sm-4"} %>
+      <div class="form-group col-sm-8">
+          <%= f.select :menu_item_id, @menus.pluck(:name, :id), {prompt: "Select Menu"}, { class: "form-control select-menu" } %>
+      </div>
+  </div>
+
+  <div class="col-md-3 col-sm-3">
+      <%= f.label :price, { class: "control-label col-sm-4"} %>
+      <div class="form-group col-sm-8">
+          <%= f.text_field :price, :class => "form-control", :value => MenuItem.find_by(id: f.menu_item_id).price , :disabled => true %>
+      </div>
+  </div>
+
+  <div class="col-md-4 col-sm-4">
+      <%= f.label :quantity, { class: "control-label col-sm-4"} %>
+      <div class="form-group col-sm-8">
+          <%= f.text_field :quantity, :class => "form-control"%>
+      </div>
+  </div>
+
+  <div class="col-md-1 col-sm-1">
+      <%= f.hidden_field :_destroy%> </br></br>
+      <%= link_to 'Delete', '#', class: 'remove_record' %>
+  </div>
+</div>

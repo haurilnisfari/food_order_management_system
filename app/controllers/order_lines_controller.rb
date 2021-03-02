@@ -3,7 +3,7 @@ class OrderLinesController < ApplicationController
   
   def new
     @line = OrderLine.new
-    @orders = Order.all
+    @customers = Customer.all
     @menus = MenuItem.all
   end
 

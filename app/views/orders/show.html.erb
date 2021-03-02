@@ -15,20 +15,7 @@
 
                                     <%= f.label :customer_id, { class: "control-label col-sm-3"} %> :  
                                     <%=  @customers.find_by(id: @order.customer_id).name %>
-                                    </br>
-                                    </br>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Back to Order List', orders_path %>
-                                    </button>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Delete', order_path(@order), method: :delete, data: {confirm: "Are you sure?"}%>
-                                    </button>
-
-                                    <button type="submit" class="btn btn-add-new-menu-item">
-                                        <%= link_to 'Edit', edit_order_path(@order)  %>
-                                    </button>
+                                    
                                 <% end %>
                             </div>
 
@@ -39,18 +26,36 @@
                                         <tr class="text-center">
                                             <th>Menu</th>
                                             <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <% @order.order_line.each do |line| %>
+                                        <% @order.order_lines.each do |line| %>
                                             <tr>
                                                 <td class="align-middle"><%= MenuItem.find_by(id: line.menu_item_id).name %></td>
-                                                <td class="align-middle"><%= line.price%></td>
+                                                <td class="text-center"><%= MenuItem.find_by(id: line.menu_item_id).price %></td>
+                                                <td class="text-center"><%= line.quantity%></td>
+                                                <td class="text-center"><%= (MenuItem.find_by(id: line.menu_item_id).price) * line.quantity %></td>
                                             </tr>
                                         <% end %>
                                     </tbody>
                                 </table>
+
+                                <button type="submit" class="btn btn-add-new-menu-item">
+                                    <%= link_to 'Back to Order List', :back, anchor: "order-table" %>
+                                </button>
+
+                                <button type="submit" class="btn btn-add-new-menu-item">
+                                    <%= link_to 'Delete', order_path(@order), method: :delete, data: {confirm: "Are you sure?"}%>
+                                </button>
+
+                                <button type="submit" class="btn btn-add-new-menu-item">
+                                    <%= link_to 'Edit', edit_order_path(@order)  %>
+                                </button>
+                                </br>
+                                </br>
                             </div>
                         </div>
                     </div>

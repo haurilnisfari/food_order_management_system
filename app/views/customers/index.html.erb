@@ -15,7 +15,7 @@
             </div>
             </br>
 
-            <div class="index-list col-md-6 col-sm-6">
+            <div class="index-list col-md-8 col-sm-8" id="customer-table">
                 <table class="table pretty table-responsive-sm text-center table-light table-striped" >
                     <thead>
                         <tr class="text-center">
@@ -39,7 +39,7 @@
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @customers %>
+                <%= paginate @customers, params: { anchor: "customer-table" }  %>
             </div>
         </div>
     </section>

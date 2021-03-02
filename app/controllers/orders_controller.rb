@@ -2,14 +2,22 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.order_lines.build
     @customers = Customer.all
+    @menus = MenuItem.all
   end
 
   def create
     flash[:notice] = "Order has been created"
-    order = Order.new(resource_params)
-    order.save
-    redirect_to orders_path
+    @menus = MenuItem.all
+    @customers = Customer.all
+    @order = Order.new(resource_params)
+    @order.name = Order.get_order_name
+    if @order.save
+      redirect_to orders_path
+    else
+      render action: :new
+    end
   end
 
   def index
@@ -19,7 +27,9 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    @order.order_lines.build
     @customers = Customer.all
+    @menus = MenuItem.all
   end
 
   def update
@@ -44,10 +54,7 @@ class OrdersController < ApplicationController
   private
 
   def resource_params
-    params.require(:order).permit(:name, :customer_id)
+    params.require(:order).permit(:name, :customer_id, order_lines_attributes: OrderLine.attribute_names.map(&:to_sym).push(:_destroy) )
   end
-
-
-
 
 end

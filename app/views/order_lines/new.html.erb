@@ -6,15 +6,9 @@
                 <div class="col-lg-6 pl-lg-0">
                     <div class="card card-category">
                         <div class="menu-new mt 3">
-                            <h2 class="heading-new-menu">Add Order Item</h2>
+                            <h2 class="heading-new-menu">Cart</h2>
                                 <div class="form-group">
                                     <%= form_for(@line) do |f| %>
-                                       
-                                        <%= f.label :order_id, { class: "control-label col-sm-3"} %>
-                                        <div class="col-sm-10">
-                                            <%= f.select :order_id, @orders.pluck(:name, :id), {prompt: "Select Order"}, { class: "form-control" } %>
-                                        </div>
-                                        </br>
 
                                         <%= f.label :menu_item_id, { class: "control-label col-sm-3"} %>
                                         <div class="col-sm-10">
