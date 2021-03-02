@@ -9,7 +9,7 @@
   <div class="col-md-3 col-sm-3">
       <%= f.label :price, { class: "control-label col-sm-4"} %>
       <div class="form-group col-sm-8">
-          <%= f.text_field :price, :class => "form-control", :value => MenuItem.find_by(id: f.menu_item_id).price , :disabled => true %>
+          <%= f.text_field :price, :class => "form-control", :disabled => true %>
       </div>
   </div>
 
@@ -25,3 +25,4 @@
       <%= link_to 'Delete', '#', class: 'remove_record' %>
   </div>
 </div>
+

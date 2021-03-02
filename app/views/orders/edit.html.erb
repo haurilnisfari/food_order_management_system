@@ -32,7 +32,7 @@
                                     </br>
 
                                     <button type="submit" class="btn btn-cancel">
-                                        <%= link_to 'Cancel', menu_items_path %>
+                                        <%= link_to 'Cancel', :back, anchor: "order-table" %>
                                     </button>
                                     <%= f.submit "Update Order" , { class: "btn btn-save-menu mb-2 px-4" } %>
 
