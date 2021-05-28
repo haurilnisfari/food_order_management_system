@@ -20,7 +20,7 @@
                                         </div>
                                         </br>
                                         <button type="submit" class="btn btn-cancel">
-                                            <%= link_to 'Cancel', customers_path %>
+                                            <%= link_to 'Cancel', :back, anchor: "customer-table" %>
                                         </button>
                                         <%= f.submit "Save" , { class: "btn btn-save-menu mb-2 px-4" } %>
                                     <% end %>

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :customers
   resources :order_lines
 
+  get 'menu_items/price/:id', to: "menu_items#get_price_menu_item"
+
 end

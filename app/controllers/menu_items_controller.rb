@@ -45,6 +45,12 @@ class MenuItemsController < ApplicationController
         redirect_to menu_items_path
     end
 
+    def get_price_menu_item()
+        menu = MenuItem.find(params[:id])
+        price = menu.price
+        render json: {'price': price}
+    end
+
     private
 
     def resource_params

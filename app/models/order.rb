@@ -2,7 +2,7 @@ class Order < ApplicationRecord
     paginates_per 5
     has_many :order_lines, dependent: :destroy
     belongs_to :customer
-    accepts_nested_attributes_for :order_lines, allow_destroy: true, reject_if: proc { |att| att['menu_item_id'].blank? }
+    accepts_nested_attributes_for :order_lines, allow_destroy: true, reject_if: :all_blank
 
     def self.search(search)
       if search

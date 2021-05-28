@@ -16,36 +16,69 @@ require('jquery')
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-document.addEventListener("turbolinks:load", function() {
-  $(document).ready(function(){
+// document.addEventListener("turbolinks:load", function() {
+//   $(document).ready(function(){
   
-    $("#add-row").click(function(e){
-      e.preventDefault()
+//     $("#add-row").click(function(e){
+//       e.preventDefault()
       
-      $("#test").html("TAHUUUUU").css('color', 'blue')
-    });
+//       $("#test").html("TAHUUUUU").css('color', 'blue')
+//     });
 
-    $(".form-actions").click(function(e){
-      e.preventDefault()
+//     $(".form-actions").click(function(e){
+//       e.preventDefault()
       
-      $("#tot").html("BLOOOOOD").css('color', 'blue')
-    });
+//       $("#tot").html("BLOOOOOD").css('color', 'blue')
+//     });
+
+//     $(".select-menu-item").change(function(e){
+//       e.preventDefault()
+      
+//       $("#price").value("").css('color', 'blue')
+//     });
+//   }
+// });
+
     
 
 
-    // $('form').on('click', '.remove_record', function(event) {
-    //   $(this).prev('input[type=hidden]').val('1');
-    //   $(this).closest('row').hide();
-    //   return event.preventDefault();
-    // });
+$(document).on('turbolinks:load', function() {
 
-    // $('.form-action').on('click', '.add_fields', function(event) {
-    //   event.preventDefault();
-    //   var regexp
-    //   regexp = new RegExp($(this).data('id'), 'g');
-    //   $('.row').append($(this).data('row').replace(regexp);
-    // });
-  
-  
+  $('form').on('click', '.remove_record', function(event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('tr').hide();
+    return event.preventDefault();
   });
-})
+
+  $('form').on('click', '.add_fields', function(event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $('.fields').append($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
+
+  $('form').on('change', '#menus', function(event) {
+    // ambil id value dari dropdown
+    id = $(this).val();
+    console.log(id);
+
+    // dari id, dijadikan param ke suatu url/endpoint dari backend (localhost/menu_items/price/:id) 
+    // $.ajax({
+    //   url: "#{update_artists_path}",
+    //   data: {
+    //     genre_id : $('#genres_select').val()
+    //   },
+    //   dataType: "script"
+    // });
+    // endpointnya balikin json berupa "price: 1000"
+    price = 9000;
+    
+    // dari balikan json, ditampilkan di #price
+    $('#price').val(price);
+
+    $("#price").css('color', 'blue')
+    return event.preventDefault();
+  });
+
+});

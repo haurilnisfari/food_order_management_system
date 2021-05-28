@@ -22,7 +22,7 @@
                                     </div>
                                     </br>
                                     </br>
-                                    <h3>Edit Cart</h3>
+                                    <h3>Cart</h3>
                                     </br>
 
                                     <table class='table'>
@@ -44,7 +44,7 @@
                                     </br>
 
                                     
-                                    <%= f.submit "Update Order" , { class: "btn btn-save-menu mb-2 px-4" } %>
+                                    <%= f.submit "Submit Order" , { class: "btn btn-save-menu mb-2 px-4" } %>
                                     <%= link_to_add_row('Add Menu Item', f, :order_lines, class: 'btn btn-save-menu mb-2 px-4') %>
                                     <button type="submit" class="btn btn-cancel">
                                         <%= link_to 'Back to Order List', orders_path %>

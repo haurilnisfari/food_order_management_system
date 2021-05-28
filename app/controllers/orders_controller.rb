@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
-    @order.order_lines.build
     @customers = Customer.all
     @menus = MenuItem.all
   end
