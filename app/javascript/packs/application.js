@@ -54,20 +54,24 @@ $(document).on('turbolinks:load', function() {
     var regexp, time;
     time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');
+
     $('.fields').append($(this).data('fields').replace(regexp, time));
+
     return event.preventDefault();
   });
 
-  $('form').on('change', '#menus', function(event) {
+  $('form').on('change', '.menus', function(event) {
     // ambil id value dari dropdown
     id = $(this).val();
+    columnMenu = $(this).parent()
 
     // dari id, dijadikan param ke suatu url/endpoint dari backend (localhost/menu_items/price/:id) 
     $.ajax({
       url: `/menu_items/price/${id}`,
       success: function(result) {
           price = result.price
-          $('#price').val(price);
+          // $('.price').val(price);
+          columnMenu.next('td').find(".price").val(price)
       }
     });
       

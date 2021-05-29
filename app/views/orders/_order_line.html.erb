@@ -5,11 +5,11 @@
     </td>
 
     <td>
-        <%= f.select :menu_item_id, @menus.pluck(:name, :id), {prompt: "Select Menu"}, {class: "form-control select-menu", id: "menus"} %>
+        <%= f.select :menu_item_id, @menus.pluck(:name, :id), {prompt: "Select Menu"}, {class: "form-control select-menu menus", id: "menus"} %>
     </td>
 
     <td>
-        <%= f.text_field :price, :class => "form-control", value: 0, id: "price"%>
+        <%= f.text_field :price, :class => "form-control price", value: 0, id: "price"%>
     </td>
 
     <td>
