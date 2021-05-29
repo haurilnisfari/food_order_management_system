@@ -61,23 +61,16 @@ $(document).on('turbolinks:load', function() {
   $('form').on('change', '#menus', function(event) {
     // ambil id value dari dropdown
     id = $(this).val();
-    console.log(id);
 
     // dari id, dijadikan param ke suatu url/endpoint dari backend (localhost/menu_items/price/:id) 
-    // $.ajax({
-    //   url: "#{update_artists_path}",
-    //   data: {
-    //     genre_id : $('#genres_select').val()
-    //   },
-    //   dataType: "script"
-    // });
-    // endpointnya balikin json berupa "price: 1000"
-    price = 9000;
-    
-    // dari balikan json, ditampilkan di #price
-    $('#price').val(price);
-
-    $("#price").css('color', 'blue')
+    $.ajax({
+      url: `/menu_items/price/${id}`,
+      success: function(result) {
+          price = result.price
+          $('#price').val(price);
+      }
+    });
+      
     return event.preventDefault();
   });
 
